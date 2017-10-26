@@ -1,0 +1,36 @@
+plugins {
+    id 'com.jfrog.bintray' version '1.7.3'
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+def versionFile = new File("version.txt")
+if (versionFile.exists()) {
+    version = versionFile.text.replaceAll("\\s","")
+} else {
+    version = '0.0.0-SNAPSHOT'
+}
+
+jar {
+    baseName = 'fint-model-core'
+}
+
+sourceCompatibility = 1.8
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+    options.windowTitle = 'FINT Model Core'
+    destinationDir = file('./javadocs/')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = gradleVersion
+}
+
+if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
+    apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.0.14/bintray.gradle'
+}
