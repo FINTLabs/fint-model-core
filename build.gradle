@@ -17,6 +17,10 @@ repositories {
     }
 }
 
+dependencies {
+    compile('javax.validation:validation-api:2.0.1.Final')
+}
+
 javadoc {
     source = sourceSets.main.allJava
     classpath = configurations.compile
