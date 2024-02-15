@@ -18,10 +18,10 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
       - name: Gradle Wrapper Validation
-        uses: gradlew/wrapper-validation-action@v1.0.4
+        uses: gradle/wrapper-validation-action@v1.0.4
 
       - name: Gradle Build Action
-        uses: gradlew/gradlew-build-action@v2.1.3
+        uses: gradle/gradle-build-action@v2.1.3
         with:
           arguments: |
             publish
