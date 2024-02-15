@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    compile("no.fint:fint-felles-model-java:${apiVersion}")
     compile('javax.validation:validation-api:2.0.1.Final')
 }
 
