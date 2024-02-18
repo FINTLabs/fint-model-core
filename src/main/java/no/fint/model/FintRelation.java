@@ -19,7 +19,7 @@ public interface FintRelation {
      *
      * @return a string representing the full package name of the related object type.
      */
-    String getTypeName();
+    String getPackageName();
 
     /**
      * Retrieves the multiplicity of the relationship.
@@ -31,5 +31,7 @@ public interface FintRelation {
      * @return an instance of {@link FintMultiplicity} representing the multiplicity of the relationship.
      */
     FintMultiplicity getMultiplicity();
+
+    String getName();
 
 }
