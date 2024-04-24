@@ -3,7 +3,7 @@ package no.fint.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface FintMetaData extends FintMainObject {
+public interface FintMetaObject extends FintMainObject {
 
     /**
      * Provides a list of relations to other {@code FintMainObject}s.
