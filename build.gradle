@@ -3,7 +3,6 @@ plugins {
 }
 
 apply plugin: 'java'
-apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.8
@@ -11,21 +10,21 @@ targetCompatibility = 1.8
 
 repositories {
     mavenLocal()
-    jcenter()
     maven {
         url 'https://repo.fintlabs.no/releases'
     }
+    mavenCentral()
 }
 
 dependencies {
-    compile('javax.validation:validation-api:2.0.1.Final')
+    implementation 'javax.validation:validation-api:2.0.1.Final'
 }
 
 javadoc {
     source = sourceSets.main.allJava
-    classpath = configurations.compile
+    classpath = configurations.runtimeClasspath
     options.windowTitle = 'FINT Model Core'
     destinationDir = file('./javadocs/')
 }
 
-apply from: 'https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.gradle'
+apply from: 'https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.ga.gradle'
