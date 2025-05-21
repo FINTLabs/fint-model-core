@@ -32,5 +32,3 @@ javadoc {
     options.windowTitle = 'FINT Model Core'
     destinationDir = file('./javadocs/')
 }
-
-apply from: 'https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.ga.gradle'
