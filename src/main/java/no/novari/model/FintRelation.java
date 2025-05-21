@@ -1,4 +1,4 @@
-package no.fint.model;
+package no.novari.model;
 
 /**
  * Represents a relation between Fint model objects.

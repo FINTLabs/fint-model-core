@@ -1,4 +1,4 @@
-package no.fint.model;
+package no.novari.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

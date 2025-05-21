@@ -1,4 +1,4 @@
-package no.fint.model;
+package no.novari.model;
 
 /**
  * Represents an identifikator within the Fint model.
