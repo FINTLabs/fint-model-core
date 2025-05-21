@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
     implementation 'javax.validation:validation-api:2.0.1.Final'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
 }
 
 javadoc {
@@ -31,4 +31,24 @@ javadoc {
     classpath = configurations.runtimeClasspath
     options.windowTitle = 'FINT Model Core'
     destinationDir = file('./javadocs/')
+}
+
+publishing {
+    repositories {
+        maven {
+            url "https://repo.fintlabs.no/releases"
+            credentials {
+                username = System.getenv("REPOSILITE_USERNAME")
+                password = System.getenv("REPOSILITE_PASSWORD")
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
 }
