@@ -24,8 +24,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: |
-            publish
-            -Pversion=${{ env.RELEASE_VERSION }}
+            publish -Pversion=${{ env.RELEASE_VERSION }}
         env:
           REPOSILITE_USERNAME: ${{ secrets.REPOSILITE_USERNAME }}
           REPOSILITE_PASSWORD: ${{ secrets.REPOSILITE_PASSWORD }}
