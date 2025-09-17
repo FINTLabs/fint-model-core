@@ -1,4 +1,4 @@
-package no.novari.model;
+package no.novari.fint.model;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package no.novari.model;
+package no.novari.fint.model;
 
 /**
  * Enumerates the possible multiplicities of relationships in the Fint model.
