@@ -46,4 +46,14 @@ public interface FintRelation {
      */
     String getName();
 
+    /**
+     * Retrieves the inverse name of the relation, if one exists.
+     * <p>
+     * This value is nullable. If {@code null} is returned, the relation is not
+     * bi-directional and has no inverse representation in the related object.
+     *
+     * @return the inverse relation name, or {@code null} if the relation is not bi-directional.
+     */
+    String getInverseName();
+
 }
