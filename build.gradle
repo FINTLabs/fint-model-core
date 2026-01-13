@@ -1,24 +1,35 @@
 plugins {
-    id 'com.github.ben-manes.versions' version '0.21.0'
+    id 'com.github.ben-manes.versions' version '0.51.0'
 }
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+project.group = 'no.novari'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 8
+    options.compilerArgs += ['-Xlint:-options']
+}
 
 repositories {
     mavenLocal()
     maven {
-        url 'https://repo.fintlabs.no/releases'
+        url = 'https://repo.fintlabs.no/releases'
     }
     mavenCentral()
 }
 
 dependencies {
     implementation 'javax.validation:validation-api:2.0.1.Final'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.20.0'
 }
 
 javadoc {
@@ -28,4 +39,22 @@ javadoc {
     destinationDir = file('./javadocs/')
 }
 
-apply from: 'https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.ga.gradle'
+publishing {
+    repositories {
+        maven {
+            url = "https://repo.fintlabs.no/releases"
+            credentials {
+                username = System.getenv("REPOSILITE_USERNAME")
+                password = System.getenv("REPOSILITE_PASSWORD")
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
